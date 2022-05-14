@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+    <div class="d-flex flex-row p-2 justify-content-center align-items-center" style="width:100%; height:500px">
+        <div style="width:300px">
+            <form class="p-2" th:action="@{'/message/save/' + ${txId}} + '/' + ${rxId}" method="post" th:object="${msg}" >
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{senderId}">
+                <input type="hidden" th:field="*{ReceiverId}">
+                <div>
+                    <label class="form-label" >Edit Message</label>
+                    <textarea th:field="*{message}" class="form-control" id="exampleFormControlTextarea1" rows="3" maxlength="255"></textarea>
+                </div>
+                <div>
+                    <button class="btn btn-primary mt-3" type="submit">Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>

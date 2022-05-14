@@ -14,7 +14,7 @@
                 <p class="fs-5 fw-semibold" th:utext="${currentUserName}" ></p>
 
             </a>
-            <a th:href="@{'/chatWith/' + ${user.Id}}" th:block th:each="user : ${listUsers}" th:if="${currentUserId != user.Id}"
+            <a th:href="@{'/chatWith/' + ${currentUserId}} + '/' + ${user.Id}" th:block th:each="user : ${listUsers}" th:if="${currentUserId != user.Id}"
                class="list-group list-group-flush border-bottom scrollarea">
                 <div  class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
                     <div class="d-flex w-100 align-items-center justify-content-between">
@@ -28,8 +28,8 @@
                 <p>Logout</p>
             </a>
         </div>
-        <div class="mt-5" >
-            <p>testing</p>
+        <div class="m-5" style="width:600px">
+            <h4>Choose a user to chat with :) or make a new user</h4>
         </div>
     </div>
 

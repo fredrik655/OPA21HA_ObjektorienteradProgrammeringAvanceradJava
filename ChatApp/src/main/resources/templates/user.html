@@ -12,11 +12,10 @@
         <a  th:href="@{'/user/' + ${currentUserId}}" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
             <p>Logged in as &nbsp </p>
             <p class="fs-5 fw-semibold" th:utext="${currentUserName}" ></p>
-
         </a>
-        <a th:href="@{'/chatWith/' + ${user.Id}}" th:block th:each="user : ${listUsers}" th:if="${currentUserId != user.Id}"
+        <a th:href="@{'/chatWith/' + ${currentUserId}} + '/' + ${user.Id}" th:block th:each="user : ${listUsers}" th:if="${currentUserId != user.Id}"
            class="list-group list-group-flush border-bottom scrollarea">
-            <div  class="list-group-item list-group-item-action active py-3 lh-sm" aria-current="true">
+            <div  class="list-group-item list-group-item-action active py-3 lh-sm " aria-current="true">
                 <div class="d-flex w-100 align-items-center justify-content-between">
                     <p class="mb1" >[[${user.username}]]</p>
                     <p class="mb1" >[[${user.email}]]</p>
@@ -29,7 +28,7 @@
             <p>Logout</p>
         </a>
     </div>
-    <div class="m-5" >
+    <div class="m-5"  >
         <h2>
             User page
         </h2>
@@ -39,6 +38,8 @@
         <p>[[${currentUser.email}]]</p>
         <h4>Age</h4>
         <p>[[${currentUser.age}]]</p>
+
+        <h3 class="mt-3">Edit information</h3>
         <form th:action="@{/user/save}" method="post" th:object="${currentUser}">
             <input type="hidden" th:field="*{id}">
             <div>
